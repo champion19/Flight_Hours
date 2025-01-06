@@ -12,7 +12,8 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Text('Hey World,I am  fucking different!'),
+          child:
+              Text('Hey World,I am  fucking different and we all the same !'),
         ),
       ),
     );
