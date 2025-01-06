@@ -7,7 +7,8 @@ void main() {
     await tester.pumpWidget(const MainApp());
 
     // Create the Finders
-    final textFinder = find.text('Hey World,I am  fucking different!');
+    final textFinder =
+        find.text('Hey World,I am  fucking different and we all the same !');
 
     // Use the `findsOneWidget` matcher to verify that the text is found
     expect(textFinder, findsOneWidget);
