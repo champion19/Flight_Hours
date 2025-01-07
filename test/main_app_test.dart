@@ -8,7 +8,7 @@ void main() {
 
     // Create the Finders
     final textFinder = find.text(
-        'Hey World,I am  fucking different and we are not all the same too !!');
+        'Hey World,I am  fucking different and we are not all the same !!');
 
     // Use the `findsOneWidget` matcher to verify that the text is found
     expect(textFinder, findsOneWidget);
