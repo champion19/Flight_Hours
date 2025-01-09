@@ -52,6 +52,3 @@ jobs:
         # Create android apk
       - name: Build apk
         run: flutter build apk
-
-
-      
