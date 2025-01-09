@@ -48,3 +48,14 @@ jobs:
      # Runs unit test
       - name: Run tests
         run: flutter test
+
+        # Create android apk
+      - name: Build apk
+        run: flutter build apk
+
+
+      # Sets up java 11
+      - uses: actions/setup-java@v4
+        with:
+         distribution: 'zulu'
+         java-version: '11'
