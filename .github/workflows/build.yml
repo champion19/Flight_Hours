@@ -48,15 +48,6 @@ jobs:
           distribution: 'zulu' # Puedes usar 'adopt' o 'temurin' si prefieres otra distribución
           java-version: '21'
 
-      # Fuerza la actualización de Gradle
-      - name: Update Gradle Wrapper
-        working-directory: android
-        run: ./gradlew wrapper --gradle-version 8.1.1 --distribution-type all
-
-      # Verifica la versión de Gradle
-      - name: Verify Gradle version
-        working-directory: android
-        run: ./gradlew --version
 
       # Runs unit test
       - name: Run tests
