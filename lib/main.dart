@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: Text(
-              'Hey World,I am  fucking different and we are not all the same every day of our lives!!'),
+              'Hey World,I am  fucking different and we are not all the same every day of our lives!'),
         ),
       ),
     );
