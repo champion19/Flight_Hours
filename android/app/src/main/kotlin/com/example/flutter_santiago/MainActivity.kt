@@ -1,4 +1,4 @@
-package com.example.flutter_santi_app
+package com.example.flutter_santiago
 
 import io.flutter.embedding.android.FlutterActivity
 
