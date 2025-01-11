@@ -16,7 +16,7 @@
 # grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
 
 # This example catches duplicate Signed-off-by lines.
-#!/bin/sh
+
 message=$(cat "$1")
 
 echo "Debug: ,Mensaje del commit: $message"
