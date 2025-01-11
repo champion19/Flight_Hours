@@ -1,5 +1,69 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-flutter analyze
-flutter test
+
+set -e
+# Run Flutter doctor
+# Ejecutar y mostrar Flutter Doctor
+echo "🔍 Ejecutando Flutter Doctor..."
+if ! output=$(flutter doctor); then
+	echo "Failed on flutter doctor"
+	echo "$output"
+	exit 1
+fi
+
+# Verificar si hay archivos Dart modificados
+dart_files=$(git diff --cached --name-only --diff-filter=ACMR | grep "\.dart$" || true)
+
+if [ -z "$dart_files" ]; then
+    echo "No hay archivos Dart modificados"
+    exit 1
+fi
+
+echo "🎯 Formateando archivos Dart..."
+
+# Guardar archivos no staged
+if git stash save --keep-index --quiet; then
+    stashed=1
+fi
+
+# Formatear archivos
+echo "$dart_files" | while read file; do
+    if [ -f "$file" ]; then
+        if ! dart format --set-exit-if-changed .; then
+            echo "error:the code is in bad format"
+            exit 1
+        fi
+        git add "$file"
+    fi
+done
+
+# Restaurar archivos no staged
+if [ -n "$stashed" ]; then
+		git stash pop --quiet
+
+fi
+
+
+echo "✅ Format completed successfully"
+
+
+# Run Flutter analyze and check for errors
+if ! output=$(flutter analyze); then
+    echo "COMMIT REJECTED: Flutter analyze found the following errors:"
+    echo "$output"
+    exit 1
+fi
+
+# Ejecutar y mostrar Flutter Doctor
+echo "🔍 Ejecutando Flutter Test.."
+if ! output=$(flutter test); then
+	echo "Failed on flutter test"
+	echo "$output"
+	exit 1
+fi
+echo "$output"
+
+
+echo "todo ha finalizado exitosamente"
+exit 0
