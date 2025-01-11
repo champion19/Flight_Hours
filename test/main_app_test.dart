@@ -1,5 +1,6 @@
 import 'package:flutter_santi_app/main.dart';
 import 'package:flutter_test/flutter_test.dart';
+import '*' from '';
 
 void main() {
   testWidgets('MainApp has a message', (WidgetTester tester) async {
