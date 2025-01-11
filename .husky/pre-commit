@@ -67,3 +67,4 @@ echo "$output"
 
 echo "todo ha finalizado exitosamente"
 exit 0
+dart test

@@ -1,0 +1,60 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# An example hook script to verify what is about to be pushed. Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed. If this script exits with a non-zero status, nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote, those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+echo "🔍 Ejecutando pruebas de Flutter..."
+flutter test --coverage
+
+if [ $? -ne 0 ]; then
+    echo "❌ Las pruebas fallaron. No se permitirá el push."
+    exit 1
+fi
+
+COVERAGE_FILE="coverage/lcov.info"
+
+if [ -f "$COVERAGE_FILE" ]; then
+    # Obtén la cobertura actual desde el archivo de cobertura
+    ACTUAL_COVERAGE=$(genhtml "$COVERAGE_FILE" -o coverage/html | grep "lines" | awk '{print $2}' | tr -d '.' | cut -d'%' -f1)
+
+    # Imprime el valor exacto para depurar
+    echo "DEBUG: Valor calculado para cobertura: $ACTUAL_COVERAGE"
+
+    # Asegúrate de que la variable no esté vacía
+    if [ -z "$ACTUAL_COVERAGE" ]; then
+        echo "❌ No se pudo calcular la cobertura. Revisa tu configuración."
+        exit 1
+    fi
+
+    echo "✅ Cobertura actual: ${ACTUAL_COVERAGE}%"
+
+    # Compara la cobertura actual con el mínimo requerido
+    MINIMUM_COVERAGE=85
+    if [ "$ACTUAL_COVERAGE" -lt "$MINIMUM_COVERAGE" ]; then
+        echo "❌ La cobertura de código es menor que el mínimo requerido (${MINIMUM_COVERAGE}%). No se permitirá el push."
+        exit 1
+    fi
+else
+    echo "❌ No se generó el archivo de cobertura. Revisa tu configuración."
+    exit 1
+fi
+
+echo "✔️ Todas las pruebas pasaron y la cobertura cumple con el estándar."
+exit 0
+
