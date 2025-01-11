@@ -1,6 +1,6 @@
 import 'package:flutter_santi_app/main.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '*' from '';
+
 
 void main() {
   testWidgets('MainApp has a message', (WidgetTester tester) async {
@@ -9,7 +9,7 @@ void main() {
 
     // Create the Finders
     final textFinder = find.text(
-        'Hey World,I am  fucking different and we are not all the same every day of our lives');
+        'Hey World,I am  fucking different and we are not all the same every day of our lives!');
 
     // Use the `findsOneWidget` matcher to verify that the text is found
     expect(textFinder, findsOneWidget);
