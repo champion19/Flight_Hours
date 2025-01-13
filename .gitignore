@@ -31,15 +31,6 @@ migrate_working_dir/
 .pub/
 /build/
 
-# LCOV coverage reports
-coverage/
-coverage/html/
-coverage/**/*.html
-coverage/**/*.css
-coverage/**/*.js
-coverage/lcov.info
-
-
 # Symbolication related
 app.*.symbols
 
@@ -50,3 +41,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# LCOV coverage reports
+coverage/
+coverage/html/
+coverage/**/*.html
+coverage/**/*.css
+coverage/**/*.js
+coverage/lcov.info
