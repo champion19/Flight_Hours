@@ -32,13 +32,8 @@ migrate_working_dir/
 /build/
 
 # Coverage
-coverage/
-.coverage
-.testrepository/
-cover/
-.coverage*
-coverage/**  # Ignora todos los archivos y subdirectorios dentro de coverage
-coverage/*.html
+**/coverage  # Ignora todos los archivos y subdirectorios dentro de coverage
+*/coverage.html
 coverage/*.css
 coverage/*.js
 
