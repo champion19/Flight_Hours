@@ -31,11 +31,13 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Coverage
-**/coverage  # Ignora todos los archivos y subdirectorios dentro de coverage
-*/coverage.html
-coverage/*.css
-coverage/*.js
+# LCOV coverage reports
+coverage/
+coverage/html/
+coverage/**/*.html
+coverage/**/*.css
+coverage/**/*.js
+coverage/lcov.info
 
 
 # Symbolication related
