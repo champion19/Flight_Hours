@@ -31,7 +31,7 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Coverage related
+# Coverage 
 coverage/
 coverage/**  # Ignora todos los archivos y subdirectorios dentro de coverage
 coverage/*.html
