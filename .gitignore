@@ -33,9 +33,11 @@ migrate_working_dir/
 
 # Coverage related
 coverage/
+coverage/**  # Ignora todos los archivos y subdirectorios dentro de coverage
 coverage/*.html
 coverage/*.css
 coverage/*.js
+
 
 # Symbolication related
 app.*.symbols
