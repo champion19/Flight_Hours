@@ -13,7 +13,7 @@ if ! output=$(flutter doctor); then
 fi
 
 # Verificar si hay archivos Dart modificados
-dart_files=$(git diff --cached --name-only --diff-filter=ACMR | grep "\.dart$" || true)
+dart_files=$(git diff --cached --name-only --diff-filter=ACMR)
 
 if [ -z "$dart_files" ]; then
     echo "No hay archivos Dart modificados"
