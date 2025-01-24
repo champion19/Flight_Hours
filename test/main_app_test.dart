@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   testWidgets('MainApp has a message', (WidgetTester tester) async {
     // Build the MainApp widget
-    await tester.pumpWidget(const MainApp());
+    await tester.pumpWidget( MyApp());
 
     // Create the Finders
     final textFinder = find.text(
