@@ -17,6 +17,16 @@ dev_dependencies:
   husky: ^0.1.7
   test: ^1.25.8
 
+  flutter_native_splash: ^2.4.4
+
+flutter_native_splash:
+  color: "#ffffff" # Color de fondo del splash screen
+  image: ./assets/flight_hours.png
+  android: true
+  ios: true
+  web: true
+
+
 flutter:
   uses-material-design: true
   assets:
